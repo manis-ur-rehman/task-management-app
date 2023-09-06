@@ -1,0 +1,51 @@
+<div #myModal class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Task</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          (click)="closeModal()"
+        >
+          <span>&times;</span>
+        </button>
+      </div>
+      <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="task-item" class="col-form-label">Task:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="task-item"
+              name="task-item"
+              ngModel
+            />
+          </div>
+          <div class="form-group">
+            <label for="task-priority" class="col-form-label">Priority:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="task-priority"
+              name="task-priority"
+              ngModel
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="submit"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+            (click)="closeModal()"
+          >
+            Add
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
