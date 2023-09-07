@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AppLayoutComponent } from '../app-layout/app-layout.component';
 import { TaskListComponent } from '../task-list/task-list.component';
 import { AddTaskComponent } from '../add-task/add-task.component';
+import {EditTaskComponent} from '../edit-task/edit-task.component';
 import { ModalComponent } from '../modal/modal.component';
 import { FormsModule } from '@angular/forms';
 
@@ -13,7 +14,8 @@ import { FormsModule } from '@angular/forms';
     AppLayoutComponent,
     TaskListComponent,
     AddTaskComponent,
-    ModalComponent
+    ModalComponent,
+    EditTaskComponent,
   ],
   imports: [
     CommonModule,

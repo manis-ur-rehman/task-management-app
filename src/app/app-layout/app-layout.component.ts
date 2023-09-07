@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import {TaskListService} from '../task-list.service';
+import {TaskListItem} from '../../../types'
 
 @Component({
   selector: 'app-layout',
@@ -6,24 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app-layout.component.css']
 })
 export class AppLayoutComponent {
-  taskList=[
-    {
-      taskName: "first",
-      priority:"low",
-      status: false,
-      date: new Date(),
-  },
-  {
-    taskName: "second",
-    priority:"medium",
-    status: true,
-    date: new Date(),
-  },
-  {
-    taskName: "third",
-    priority:"high",
-    status: false,
-    date: new Date(),
-  },
-  ]
+  taskList:TaskListItem[] = []
+  taskListService: TaskListService = inject(TaskListService)
+  constructor(){
+    this.taskList = this.taskListService.getAllTaskListing();
+  }
 }

@@ -9,12 +9,11 @@ import {ModalComponent} from '../modal/modal.component';
 export class AddTaskComponent implements OnInit{
   constructor(){}
   @ViewChild('modalComponent') modalComponent!:ModalComponent
-
 ngOnInit(): void {
   
 }
 
-openModal(){
-this.modalComponent.openModal()
+openModal(id?: number){
+this.modalComponent.openModal(id)
 }
 }

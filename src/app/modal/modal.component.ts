@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import {AppLayoutComponent} from '../app-layout/app-layout.component'
+import { Component, OnInit, ViewChild, ElementRef, inject } from '@angular/core';
+import {TaskListService} from '../task-list.service';
+import {TaskListItem} from '../../../types';
 
 @Component({
   selector: 'modal',
@@ -7,23 +8,37 @@ import {AppLayoutComponent} from '../app-layout/app-layout.component'
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent implements OnInit {
+taskListService: TaskListService = inject(TaskListService);
+editId:number | undefined = undefined;
 @ViewChild('myModal') myModal!: ElementRef;
-@ViewChild('taskListComponent') taskListComponent!:AppLayoutComponent
-
-constructor(){}
-
-ngOnInit(): void {  
+constructor(){
+}
+ngOnInit(): void {
 }
 
-openModal(){
+openModal(id?:number){
+  this.editId = id;
   this.myModal.nativeElement.style.display = 'block';
 }
 
 closeModal(){
   this.myModal.nativeElement.style.display = 'none'
+  // this.editId = undefined
 }
 
-onSubmit(data:any){
-console.log("data: ", data.value)
+onSubmit(data:TaskListItem){
+let item = {
+  taskName: data.taskName,
+  taskPriority:data.taskPriority,
+  taskStatus: data.taskStatus,
+  taskDate: data.taskDate,
+}
+if(this.editId !=undefined) {
+  console.log("id: ", this.editId);
+  this.taskListService.editTaskList(this.editId, item);
+}
+else{
+  this.taskListService.addTaskList(item);
+}
 }
 }

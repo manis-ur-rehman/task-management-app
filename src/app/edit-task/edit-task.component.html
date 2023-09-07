@@ -1,0 +1,13 @@
+<div>
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="openModal()"
+    [disabled]="taskStatus"
+  >
+    Edit
+  </button>
+  <div>
+    <modal #modalComponent></modal>
+  </div>
+</div>

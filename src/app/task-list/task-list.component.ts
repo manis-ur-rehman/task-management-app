@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { TaskListItem } from 'types';
+import {TaskListService} from '../task-list.service'
 
 @Component({
   selector: 'task-list',
@@ -8,5 +10,9 @@ import { Component, Input } from '@angular/core';
 
 
 export class TaskListComponent {
-  @Input() taskList: any
+  @Input() taskList?: TaskListItem[]
+  taskListService:TaskListService = inject(TaskListService);
+  markAsDoneHandling(id: number){
+this.taskListService.markDoneTask(id);
+  }
 }

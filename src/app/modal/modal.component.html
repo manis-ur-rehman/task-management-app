@@ -1,36 +1,60 @@
 <div #myModal class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Add Task</h5>
+        <h5 class="modal-title">
+          {{ editId != undefined ? "Edit" : "Add" }} Task
+        </h5>
         <button
           type="button"
-          class="close"
+          class="btn-close"
           data-dismiss="modal"
+          aria-label="Close"
           (click)="closeModal()"
-        >
-          <span>&times;</span>
-        </button>
+        ></button>
       </div>
-      <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <form #form="ngForm" (ngSubmit)="onSubmit(form.value); form.resetForm()">
         <div class="modal-body">
           <div class="form-group">
-            <label for="task-item" class="col-form-label">Task:</label>
+            <label for="taskName" class="col-form-label">Task:</label>
             <input
               type="text"
               class="form-control"
-              id="task-item"
-              name="task-item"
+              id="taskName"
+              name="taskName"
               ngModel
             />
           </div>
           <div class="form-group">
-            <label for="task-priority" class="col-form-label">Priority:</label>
+            <label for="taskPriority" class="col-form-label">Priority:</label>
             <input
               type="text"
               class="form-control"
-              id="task-priority"
-              name="task-priority"
+              id="taskPriority"
+              name="taskPriority"
+              ngModel
+            />
+          </div>
+          <div class="form-group">
+            <label class="col-form-label" for="statusSelect">Status</label>
+            <select
+              class="form-control"
+              id="statusSelect"
+              name="taskStatus"
+              ngModel
+            >
+              <option selected>Select</option>
+              <option [ngValue]="true">Completed</option>
+              <option [ngValue]="false">Pending</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="taskDate" class="col-form-label">Date:</label>
+            <input
+              type="date"
+              class="form-control"
+              id="taskDate"
+              name="taskDate"
               ngModel
             />
           </div>
@@ -42,7 +66,7 @@
             data-dismiss="modal"
             (click)="closeModal()"
           >
-            Add
+            {{ editId != undefined ? "Edit" : "Add" }}
           </button>
         </div>
       </form>

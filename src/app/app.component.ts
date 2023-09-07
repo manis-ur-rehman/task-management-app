@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TaskPriority, TaskListItem } from 'types';
 
 @Component({
   selector: 'app-root',

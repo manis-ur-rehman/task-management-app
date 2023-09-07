@@ -3,24 +3,60 @@
     <h3 class="text-primary">Tasks</h3>
     <add-task></add-task>
   </div>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th scope="col">S No.</th>
-        <th scope="col">Task Name</th>
-        <th scope="col">Priority</th>
-        <th scope="col">Status</th>
-        <th scope="col">Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let task of taskList; index as i">
-        <th scope="row">{{ i + 1 }}</th>
-        <td>{{ task.taskName }}</td>
-        <td>{{ task.priority }}</td>
-        <td>{{ task.status === true ? "Completed" : "Pending" }}</td>
-        <td>{{ task.date | date : "dd/MM/yyyy" }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="my-5"></div>
+  <div class="bdr">
+    <table class="table table-bordered table-striped rounded">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col" class="text-center">S No.</th>
+          <th scope="col" class="text-center">Task Name</th>
+          <th scope="col" class="text-center">Priority</th>
+          <th scope="col" class="text-center">Status</th>
+          <th scope="col" class="text-center">Date</th>
+          <th scope="col" class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of taskList; index as i">
+          <td scope="row" class="text-center">{{ i + 1 }}</td>
+          <td class="text-center">{{ task.taskName }}</td>
+          <td>
+            <div
+              class="span rounded text-white text-center p-1"
+              [ngStyle]="{
+                'background-color':
+                  task.taskPriority === 'high'
+                    ? 'red'
+                    : task.taskPriority === 'medium'
+                    ? 'yellow'
+                    : 'green'
+              }"
+            >
+              {{ task.taskPriority }}
+            </div>
+          </td>
+          <td class="text-center">
+            {{ task.taskStatus === true ? "Completed" : "Pending" }}
+          </td>
+          <td class="text-center">{{ task.taskDate | date : "dd/MM/yyyy" }}</td>
+          <td>
+            <div class="d-flex justify-content-around">
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="markAsDoneHandling(i)"
+                [disabled]="task.taskStatus"
+              >
+                <span class="material-icons text-white">Mark as done</span>
+              </button>
+              <edit-task
+                [taskStatus]="task.taskStatus"
+                [editId]="i"
+              ></edit-task>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
