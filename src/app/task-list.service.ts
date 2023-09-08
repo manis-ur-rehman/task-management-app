@@ -17,7 +17,7 @@ export class TaskListService {
   {
     taskName: "second",
     taskPriority:TaskPriority.MEDIUM,
-    taskStatus: true,
+    taskStatus: false,
     taskDate: new Date(),
   },
   {
@@ -37,12 +37,15 @@ getAllTaskListing():TaskListItem[]{
 addTaskList(item: TaskListItem){
 this.taskList.push(item);
 }
-editTaskList(id: number, editItem: TaskListItem){
+updateTaskByIndexing(id: number, editItem: TaskListItem){
   this.taskList.forEach((_, index)=>{
     if(id === index){
       this.taskList[id] = editItem
     }
   })
+}
+getTaskByIndexing(id: number){
+  return this.taskList.at(id);
 }
 markDoneTask(id:number){
   this.taskList.forEach((item, index)=>{
