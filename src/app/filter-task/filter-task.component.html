@@ -1,0 +1,14 @@
+<form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <select
+      class="form-select bg-primary text-white"
+      aria-label="Default select example"
+      (change)="changeCity($event)"
+      formControlName="filterTask"
+    >
+      <option selected [value]="null">Select Status(All)</option>
+      <option [value]="true">Completed</option>
+      <option [value]="false">Pending</option>
+    </select>
+  </div>
+</form>

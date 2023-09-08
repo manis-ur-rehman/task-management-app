@@ -7,13 +7,13 @@ import {ModalComponent} from '../modal/modal.component';
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit{
-  constructor(){}
   @ViewChild('modalComponent') modalComponent!:ModalComponent
+  constructor(){}
 ngOnInit(): void {
-  
 }
 
-openModal(id?: number){
-this.modalComponent.openModal(id)
+openModal(){
+this.modalComponent.openModal()
 }
+
 }

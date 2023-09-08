@@ -5,7 +5,8 @@ import { TaskListComponent } from '../task-list/task-list.component';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import {EditTaskComponent} from '../edit-task/edit-task.component';
 import { ModalComponent } from '../modal/modal.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterTaskComponent } from '../filter-task/filter-task.component';
 
 
 
@@ -16,10 +17,12 @@ import { FormsModule } from '@angular/forms';
     AddTaskComponent,
     ModalComponent,
     EditTaskComponent,
+    FilterTaskComponent
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [AppLayoutComponent]
 })

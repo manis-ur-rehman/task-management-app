@@ -1,7 +1,10 @@
 <div>
   <div class="d-flex justify-content-between">
     <h3 class="text-primary">Tasks</h3>
-    <add-task></add-task>
+    <div class="d-flex flex-row align-content-center">
+      <filter-task (counter)="onChange($event)"></filter-task>
+      <add-task></add-task>
+    </div>
   </div>
   <div class="my-5"></div>
   <div class="bdr">

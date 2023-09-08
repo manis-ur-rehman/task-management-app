@@ -8,9 +8,4 @@ import {TaskListItem} from '../../../types'
   styleUrls: ['./app-layout.component.css']
 })
 export class AppLayoutComponent {
-  taskList:TaskListItem[] = []
-  taskListService: TaskListService = inject(TaskListService)
-  constructor(){
-    this.taskList = this.taskListService.getAllTaskListing();
-  }
 }

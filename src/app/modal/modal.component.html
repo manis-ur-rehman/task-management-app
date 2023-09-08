@@ -13,7 +13,7 @@
           (click)="closeModal()"
         ></button>
       </div>
-      <form #form="ngForm" (ngSubmit)="onSubmit(form.value); form.resetForm()">
+      <form [formGroup]="taskItemForm" (ngSubmit)="onSubmit()">
         <div class="modal-body">
           <div class="form-group">
             <label for="taskName" class="col-form-label">Task:</label>
@@ -21,8 +21,7 @@
               type="text"
               class="form-control"
               id="taskName"
-              name="taskName"
-              ngModel
+              formControlName="taskName"
             />
           </div>
           <div class="form-group">
@@ -31,8 +30,7 @@
               type="text"
               class="form-control"
               id="taskPriority"
-              name="taskPriority"
-              ngModel
+              formControlName="taskPriority"
             />
           </div>
           <div class="form-group">
@@ -40,12 +38,11 @@
             <select
               class="form-control"
               id="statusSelect"
-              name="taskStatus"
-              ngModel
+              formControlName="taskStatus"
             >
-              <option selected>Select</option>
-              <option [ngValue]="true">Completed</option>
-              <option [ngValue]="false">Pending</option>
+              <option selected [value]="null">Select</option>
+              <option [value]="true">Completed</option>
+              <option [value]="false">Pending</option>
             </select>
           </div>
           <div class="form-group">
@@ -54,8 +51,7 @@
               type="date"
               class="form-control"
               id="taskDate"
-              name="taskDate"
-              ngModel
+              formControlName="taskDate"
             />
           </div>
         </div>

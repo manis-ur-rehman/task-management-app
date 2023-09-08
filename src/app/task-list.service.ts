@@ -51,5 +51,10 @@ markDoneTask(id:number){
     }
   })
 }
+filterTask(filterTaskStatus:boolean){
+  return this.taskList.filter((item)=>
+    item.taskStatus === filterTaskStatus
+  )
+}
 }
 
