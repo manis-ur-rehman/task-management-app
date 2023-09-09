@@ -7,15 +7,15 @@ import {FormBuilder} from '@angular/forms';
   styleUrls: ['./filter-task.component.css']
 })
 export class FilterTaskComponent {
-  @Output() counter:EventEmitter<any> = new EventEmitter() 
+  @Output() filterStatusBind:EventEmitter<any> = new EventEmitter() 
 constructor(public formBuilder:FormBuilder){}
 
 filterForm = this.formBuilder.group({
   filterTask: [null],
 });
 
-changeCity(e: any){
-    this.counter.emit(e);
+FilterStatusHandling(e: any){
+    this.filterStatusBind.emit(e);
 }
 onSubmit(){}
 }

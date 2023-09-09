@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-between">
     <h3 class="text-primary">Tasks</h3>
     <div class="d-flex flex-row align-content-center">
-      <filter-task (counter)="onChange($event)"></filter-task>
+      <filter-task (filterStatusBind)="onChange($event)"></filter-task>
       <add-task></add-task>
     </div>
   </div>
@@ -22,7 +22,7 @@
       <tbody>
         <tr *ngFor="let task of taskList; index as i">
           <td scope="row" class="text-center">{{ i + 1 }}</td>
-          <td class="text-center">{{ task.taskName }}</td>
+          <td class="text-center">{{ task.taskName | uppercase }}</td>
           <td>
             <div
               class="span rounded text-white text-center p-1"

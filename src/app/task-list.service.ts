@@ -17,7 +17,7 @@ export class TaskListService {
   {
     taskName: "second",
     taskPriority:TaskPriority.MEDIUM,
-    taskStatus: false,
+    taskStatus: true,
     taskDate: new Date(),
   },
   {
