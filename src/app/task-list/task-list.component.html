@@ -22,7 +22,7 @@
       <tbody>
         <tr *ngFor="let task of taskList; index as i">
           <td scope="row" class="text-center">{{ i + 1 }}</td>
-          <td class="text-center">{{ task.taskName | uppercase }}</td>
+          <td class="text-center">{{ task.taskName | capatilizeText }}</td>
           <td>
             <div
               class="span rounded text-white text-center p-1"

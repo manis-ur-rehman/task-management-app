@@ -7,6 +7,7 @@ import {EditTaskComponent} from '../edit-task/edit-task.component';
 import { ModalComponent } from '../modal/modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterTaskComponent } from '../filter-task/filter-task.component';
+import { CapatilizeTextPipe } from '../capatilize-text.pipe';
 
 
 
@@ -17,7 +18,8 @@ import { FilterTaskComponent } from '../filter-task/filter-task.component';
     AddTaskComponent,
     ModalComponent,
     EditTaskComponent,
-    FilterTaskComponent
+    FilterTaskComponent,
+    CapatilizeTextPipe
   ],
   imports: [
     CommonModule,
