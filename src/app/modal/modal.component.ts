@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, inject} from '@angular/core';
 import {TaskListService} from '../task-list.service';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { TaskPriority } from 'types';
 
 @Component({
   selector: 'modal',
@@ -19,10 +20,10 @@ taskItemForm!: FormGroup
 
 ngOnInit() {
   this.taskItemForm = this.formBuilder.group({
-    taskName: new FormControl<string>(''),
-    taskPriority: new FormControl<string>(''),
-    taskStatus: new FormControl<boolean | null>(null),
-    taskDate: new FormControl<Date>(new Date()),
+    taskName: new FormControl<string>('', [Validators.required]),
+    taskPriority: new FormControl<string>('', [Validators.required, Validators.pattern(`^${TaskPriority.HIGH}|${TaskPriority.MEDIUM}|${TaskPriority.LOW}$`)]),
+    taskStatus: new FormControl<boolean | null>(null, [Validators.required]),
+    taskDate: new FormControl<Date>(new Date(), [Validators.required]),
   })
 }
 openModal(id?:number){

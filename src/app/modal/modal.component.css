@@ -1,3 +1,6 @@
 .fade.modal {
     opacity: unset !important;
   }
+.modal-footer {
+  justify-content: center;
+}
