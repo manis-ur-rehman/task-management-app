@@ -48,12 +48,12 @@
                 type="button"
                 class="btn btn-primary"
                 (click)="markAsDoneHandling(i)"
-                [disabled]="task.taskStatus"
+                [disabled]="task.taskStatus === true ? true : false"
               >
                 <span class="material-icons text-white">Mark as done</span>
               </button>
               <edit-task
-                [taskStatus]="task.taskStatus"
+                [taskStatus]="task.taskStatus === true ? true : false"
                 [editId]="i"
               ></edit-task>
             </div>
